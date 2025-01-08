@@ -1,6 +1,6 @@
 package viva3;
 
-public class TestProgram {
+public class Viva3q6 {
     public static void main(String[] args) {  
         // Creating products
         Product laptop = new Product("Laptop", 1200.00, 10);  
