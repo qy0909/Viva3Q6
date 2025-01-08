@@ -19,22 +19,22 @@ public class TestProgram {
         // Creating an order
         Order order = new Order();  
         // Check availability and add products to the order
-        if (inventory.isAvailable(laptop, 1)) {  
-            order.addProduct(laptop);  
-            inventory.updateStock(laptop, 1);  
+        if (inventory.isAvailable(laptop, 2)) {  
+            order.addProduct(laptop, 2);  
+            inventory.updateStock(laptop, 2);  
         } else {  
             System.out.println(laptop.getName() + " is out of stock.");  
         }  
   
         if (inventory.isAvailable(phone, 2)) {  
-            order.addProduct(phone);  
+            order.addProduct(phone, 2);  
             inventory.updateStock(phone, 2);  
         } else {  
             System.out.println(phone.getName() + " is out of stock.");  
         }  
           
         if (inventory.isAvailable(powerBank, 1)) {  
-            order.addProduct(powerBank);  
+            order.addProduct(powerBank, 1);  
             inventory.updateStock(powerBank, 1);  
         } else {  
             System.out.println(powerBank.getName() + " is out of stock.");  
