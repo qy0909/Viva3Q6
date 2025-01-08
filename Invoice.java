@@ -1,5 +1,7 @@
 package viva3;
 
+import java.util.Map;
+
 public class Invoice {
     private Order order;      // The order associated with the invoice
     private Customer customer; // The customer details
@@ -13,11 +15,27 @@ public class Invoice {
     // Override toString to format and display the invoice
     @Override
     public String toString() {
-        String invoice = customer + "\n\nProducts:\n";
-        for (Product product : order.getProducts()) {
-            invoice += "- " + product + "\n"; // List each product
+        StringBuilder invoice = new StringBuilder();
+
+        // Add customer details
+        invoice.append(customer).append("\n\n");
+
+        // Add order details
+        invoice.append("Products:\n");
+        for (Map.Entry<Product, Integer> entry : order.getProducts().entrySet()) {
+            Product product = entry.getKey();
+            int quantity = entry.getValue();
+            invoice.append("- ")
+                    .append(product.getName())
+                    .append(": RM")
+                    .append(String.format("%.2f", product.getPrice()))
+                    .append("\n");
         }
-        invoice += "\nTotal: RM" + String.format("%.2f", order.calculateTotal());
-        return invoice;
+
+        // Add total
+        invoice.append("\n").append(order).append("\nTotal: RM")
+                .append(String.format("%.2f", order.calculateTotal()));
+
+        return invoice.toString();
     }
 }
